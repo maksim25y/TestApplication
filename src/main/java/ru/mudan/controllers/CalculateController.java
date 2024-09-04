@@ -20,7 +20,7 @@ public class CalculateController {
     }
 
     @GetMapping
-    public ResponseEntity<Object>getVacationPay(@RequestParam Long averageSalary,
+    public ResponseEntity<VacationPayResponse>getVacationPay(@RequestParam Long averageSalary,
                                                 @RequestParam Integer amountVacationDays){
         return new ResponseEntity<>(new VacationPayResponse(calculatorService.calculateVacationPay(averageSalary,amountVacationDays)), HttpStatus.OK);
     }
