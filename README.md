@@ -32,6 +32,10 @@ docker-compose up
   
 ![image](https://github.com/user-attachments/assets/3da79f59-fe68-439e-8b41-86b4ec59d82f)
 
+Для получения рассчёта по средней зарплате за год, количеству дней отпуска, дате начала отпуска необходимо зайти в Postman или др, далее выполнить GET запрос по адресу localhost:8080/calculate, указав в параметрах запроса среднюю ЗП за год averageSalary, количество дней отпуска amountVacationDays, дату начала отпуска startDate:
+
+![image](https://github.com/user-attachments/assets/6bdedcbc-c4fe-4d20-badd-09e3470d27a5)
+
 При указании значений меньше нуля в качестве средней ЗП или указании значений меньше или равных нулю в качестве количества отпускных будет выдана ошибка:
 
 ![image](https://github.com/user-attachments/assets/664b822d-1915-4e18-8cd7-67fff7020f90)
