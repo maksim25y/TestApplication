@@ -32,4 +32,9 @@ docker-compose up
   
 ![image](https://github.com/user-attachments/assets/3da79f59-fe68-439e-8b41-86b4ec59d82f)
 
+При указании значений меньше нуля в качестве средней ЗП или указании значений меньше или равных нулю в качестве количества отпускных будет выдана ошибка:
+
+![image](https://github.com/user-attachments/assets/664b822d-1915-4e18-8cd7-67fff7020f90)
+
+
 </details>
