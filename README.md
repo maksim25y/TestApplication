@@ -40,5 +40,8 @@ docker-compose up
 
 ![image](https://github.com/user-attachments/assets/664b822d-1915-4e18-8cd7-67fff7020f90)
 
+При указании в параметрах запроса некооректного формата даты будет выдана ошибка:
+
+![image](https://github.com/user-attachments/assets/11433bee-b54b-46c2-bab3-7e8f860bd10d)
 
 </details>
