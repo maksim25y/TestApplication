@@ -45,3 +45,13 @@ docker-compose up
 ![image](https://github.com/user-attachments/assets/11433bee-b54b-46c2-bab3-7e8f860bd10d)
 
 </details>
+<details><summary>Праздники при подсчёте</summary>
+  1 января
+  7 января
+  23 февраля
+  8 марта
+  9 мая
+  4 ноября
+</details>
+
+
