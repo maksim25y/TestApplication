@@ -22,28 +22,34 @@ public class CalculatorService {
         return (int) ((averageSalary/29.8)*amountVacationDays);
     }
 
-    public Integer calculateVacationPayWithDates(int averageSalary, int amountVacationDays, DateDTO dateDTO) {
+    public Integer calculateVacationPayWithDates(int averageSalary, int amountVacationDays, String startDate) {
         try{
-            LocalDate start = LocalDate.parse(dateDTO.getStartDate());
-            LocalDate end = LocalDate.parse(dateDTO.getEndDate());
-            int weekendDaysCount = getWeekendDays(start, end);
+            LocalDate start = LocalDate.parse(startDate);
+            int weekendDaysCount = getWeekendDays(start,amountVacationDays);
             return calculateVacationPay(averageSalary,amountVacationDays-weekendDaysCount);
         }catch (Exception e){
             return null;
         }
     }
-    private int getWeekendDays(LocalDate start, LocalDate end) {
-        return (int) start.datesUntil(end.plusDays(1))
-                .filter(date ->
-                        (date.getDayOfWeek() == DayOfWeek.SATURDAY ||
-                                date.getDayOfWeek() == DayOfWeek.SUNDAY) &&
-                                holidays.stream().noneMatch(holiday ->
-                                        holiday.getMonthValue() == date.getMonthValue() &&
-                                                holiday.getDayOfMonth() == date.getDayOfMonth()) ||
-                                holidays.stream().anyMatch(holiday ->
-                                        holiday.getMonthValue() == date.getMonthValue() &&
-                                                holiday.getDayOfMonth() == date.getDayOfMonth())
-                )
-                .count();
+    private int getWeekendDays(LocalDate start,int amount) {
+        int count = 0;
+        LocalDate currentDate = start;
+
+        while (amount > 0 && count < amount) {
+            LocalDate finalCurrentDate = currentDate;
+            if (currentDate.getDayOfWeek() == DayOfWeek.SATURDAY ||
+                    currentDate.getDayOfWeek() == DayOfWeek.SUNDAY ||
+                    holidays.stream().anyMatch(holiday ->
+                            holiday.getMonthValue() == finalCurrentDate.getMonthValue() &&
+                                    holiday.getDayOfMonth() == finalCurrentDate.getDayOfMonth()
+                    )
+            ) {
+                count++;
+                amount--;
+            }
+            currentDate = currentDate.plusDays(1);
+        }
+
+        return count;
     }
 }

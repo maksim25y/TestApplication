@@ -19,11 +19,11 @@ public class CalculateController {
 
     @GetMapping
     public ResponseEntity<Object>getVacationPay(@RequestParam Integer averageSalary,
-                                                             @RequestParam Integer amountVacationDays,
-                                                             @RequestBody(required = false)DateDTO dateDTO){
+                                                @RequestParam Integer amountVacationDays,
+                                                @RequestParam(required = false)String startDate){
         if(amountVacationDays<=0||averageSalary<0)return new ResponseEntity<>("Некорректные данные для подсчёта",HttpStatus.BAD_REQUEST);
-        if(dateDTO!=null){
-            Integer vacationPay = calculatorService.calculateVacationPayWithDates(averageSalary,amountVacationDays,dateDTO);
+        if(startDate!=null){
+            Integer vacationPay = calculatorService.calculateVacationPayWithDates(averageSalary,amountVacationDays,startDate);
             if(vacationPay==null){
                 return new ResponseEntity<>("Некорректные данные для подсчёта",HttpStatus.BAD_REQUEST);
             }

@@ -3,6 +3,7 @@ package ru.mudan;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import ru.mudan.dto.DateDTO;
 import ru.mudan.services.CalculatorService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,12 +17,24 @@ public class CalculatorServiceTests {
         assertEquals(20_134,calculatorService.calculateVacationPay(60_000,10));
     }
     @Test
+    public void whenAverageSalaryIs60_000AndAmountVacationDaysIs10WithHolidaysAndWeekends(){
+        assertEquals(10067,calculatorService.calculateVacationPayWithDates(60_000,10,"2024-11-01"));
+    }
+    @Test
     public void whenAverageSalaryIs60_000AndAmountVacationDaysIs28ResultIs56375(){
         assertEquals(56_375,calculatorService.calculateVacationPay(60_000,28));
     }
     @Test
+    public void whenAverageSalaryIs60_000AndAmountVacationDaysIs28ResultIsWithWeekends(){
+        assertEquals(28187,calculatorService.calculateVacationPayWithDates(60_000,28,"2024-11-06"));
+    }
+    @Test
     public void whenAverageSalaryIs100_000AndAmountVacationDaysIs28ResultIs93959(){
         assertEquals(93_959,calculatorService.calculateVacationPay(100_000,28));
+    }
+    @Test
+    public void whenAverageSalaryIs100_000AndAmountVacationDaysIs28WithWeekends(){
+        assertEquals(46979,calculatorService.calculateVacationPayWithDates(100_000,28,"2024-11-06"));
     }
     @Test
     public void whenAverageSalaryIs1_000_000AndAmountVacationDaysIs15ResultIs503355(){
@@ -35,4 +48,9 @@ public class CalculatorServiceTests {
     public void whenAverageSalaryIs18_000AndAmountVacationDaysIs10ResultIs6040(){
         assertEquals(6_040,calculatorService.calculateVacationPay(18_000,10));
     }
+    @Test
+    public void whenAverageSalaryIs18_000AndAmountVacationDaysIs10WithHolidaysAndWeekends(){
+        assertEquals(3_020,calculatorService.calculateVacationPayWithDates(18_000,10,"2024-11-01"));
+    }
+
 }
