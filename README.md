@@ -27,3 +27,9 @@ docker-compose up
 
 Чтобы остановить работу контейнеров, в терминале, откуда вы запускали docker-compose нажмите Ctrl+C (Control + C для Mac)
 </details>
+<details><summary>Функционал</summary>
+Для получения рассчёта по средней зарплате за год и количеству дней отпуска необходимо зайти в Postman или др, далее выполнить GET запрос по адресу localhost:8080/calculate, указав в параметрах запроса среднюю ЗП за год averageSalary и количество дней отпуска amountVacationDays:
+  
+![image](https://github.com/user-attachments/assets/3da79f59-fe68-439e-8b41-86b4ec59d82f)
+
+</details>
