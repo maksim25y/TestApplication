@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  springboot:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./target/TestApplication-0.0.1-SNAPSHOT.jar:/app.jar
+    command: [ "java", "-jar", "/app.jar" ]
