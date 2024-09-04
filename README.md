@@ -47,11 +47,17 @@ docker-compose up
 </details>
 <details><summary>Праздники при подсчёте</summary>
   1 января
+  
   7 января
+  
   23 февраля
+  
   8 марта
+  
   9 мая
+  
   4 ноября
+  
 </details>
 
 
