@@ -115,6 +115,26 @@ public class CalculateControllerTests {
         MvcResult result = getResultMvcWithStartDate(averageSalary, amountVacationDays,startDate);
         assertEquals(expected,getResultFromResponseBody(result));
     }
+    @Test
+    public void whenAverageSalaryLessThanZero() throws Exception {
+        int averageSalary = -1;
+        int amountVacationDays = 10;
+
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/calculate")
+                        .param("averageSalary",String.valueOf(averageSalary))
+                        .param("amountVacationDays",String.valueOf(amountVacationDays)))
+                .andExpect(status().is4xxClientError());
+    }
+    @Test
+    public void whenAmountVacationDaysLessThanZero() throws Exception {
+        int averageSalary = 10_000;
+        int amountVacationDays = -10;
+
+        mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/calculate")
+                        .param("averageSalary",String.valueOf(averageSalary))
+                        .param("amountVacationDays",String.valueOf(amountVacationDays)))
+                .andExpect(status().is4xxClientError());
+    }
 
     private MvcResult getResultMvcWithNotStartDate(int averageSalary, int amountVacationDays) throws Exception {
         return mockMvc.perform(MockMvcRequestBuilders.get("http://localhost:8080/calculate")

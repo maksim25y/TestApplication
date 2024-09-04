@@ -52,5 +52,4 @@ public class CalculatorServiceTests {
     public void whenAverageSalaryIs18_000AndAmountVacationDaysIs10WithHolidaysAndWeekends(){
         assertEquals(3_020,calculatorService.calculateVacationPayWithDates(18_000,10,"2024-11-01"));
     }
-
 }
