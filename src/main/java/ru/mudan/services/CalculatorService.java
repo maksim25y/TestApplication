@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CalculatorService {
-    public long calculateVacationPay(long averageSalary,int amountVacationDays){
-        return (long) ((averageSalary/29.8)*amountVacationDays);
+    public int calculateVacationPay(int averageSalary,int amountVacationDays){
+        return (int) ((averageSalary/29.8)*amountVacationDays);
     }
 }

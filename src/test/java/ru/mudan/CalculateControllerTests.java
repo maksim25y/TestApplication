@@ -36,9 +36,9 @@ public class CalculateControllerTests {
     }
     @Test
     public void whenAverageSalaryIs60_000AndAmountVacationDaysIs10() throws Exception {
-        long averageSalary = 60_000L;
+        int averageSalary = 60_000;
         int amountVacationDays = 10;
-        long expected = 20_134L;
+        int expected = 20_134;
         when(calculatorService.calculateVacationPay(averageSalary,amountVacationDays)).thenReturn(expected);
 
         MvcResult result = getMvcResult(averageSalary, amountVacationDays);
@@ -46,9 +46,9 @@ public class CalculateControllerTests {
     }
     @Test
     public void whenAverageSalaryIs60_000AndAmountVacationDaysIs28() throws Exception {
-        long averageSalary = 60_000L;
+        int averageSalary = 60_000;
         int amountVacationDays = 28;
-        long expected = 56_375L;
+        int expected = 56_375;
         when(calculatorService.calculateVacationPay(averageSalary,amountVacationDays)).thenReturn(expected);
 
         MvcResult result = getMvcResult(averageSalary, amountVacationDays);
@@ -56,9 +56,9 @@ public class CalculateControllerTests {
     }
     @Test
     public void whenAverageSalaryIs100_000AndAmountVacationDaysIs28() throws Exception {
-        long averageSalary = 100_000L;
+        int averageSalary = 100_000;
         int amountVacationDays = 28;
-        long expected = 93_959L;
+        int expected = 93_959;
         when(calculatorService.calculateVacationPay(averageSalary,amountVacationDays)).thenReturn(expected);
 
         MvcResult result = getMvcResult(averageSalary, amountVacationDays);
@@ -66,9 +66,9 @@ public class CalculateControllerTests {
     }
     @Test
     public void whenAverageSalaryIs1_000_000AndAmountVacationDaysIs15() throws Exception {
-        long averageSalary = 1_000_000L;
+        int averageSalary = 1_000_000;
         int amountVacationDays = 15;
-        long expected = 503_355L;
+        int expected = 503_355;
         when(calculatorService.calculateVacationPay(averageSalary,amountVacationDays)).thenReturn(expected);
 
         MvcResult result = getMvcResult(averageSalary, amountVacationDays);
@@ -76,9 +76,9 @@ public class CalculateControllerTests {
     }
     @Test
     public void whenAverageSalaryIs12_000AndAmountVacationDaysIs12() throws Exception {
-        long averageSalary = 12_000L;
+        int averageSalary = 12_000;
         int amountVacationDays = 12;
-        long expected = 4_832L;
+        int expected = 4_832;
         when(calculatorService.calculateVacationPay(averageSalary,amountVacationDays)).thenReturn(expected);
 
         MvcResult result = getMvcResult(averageSalary, amountVacationDays);
@@ -86,18 +86,18 @@ public class CalculateControllerTests {
     }
     @Test
     public void whenAverageSalaryIs18_000AndAmountVacationDaysIs10() throws Exception {
-        long averageSalary = 18_000L;
+        int averageSalary = 18_000;
         int amountVacationDays = 10;
-        long expected = 6_040L;
+        int expected = 6_040;
         when(calculatorService.calculateVacationPay(averageSalary,amountVacationDays)).thenReturn(expected);
 
         MvcResult result = getMvcResult(averageSalary, amountVacationDays);
         assertEquals(6_040,getResultFromResponseBody(result));
     }
 
-    private MvcResult getMvcResult(long averageSalary, int amountVacationDays) throws Exception {
-        String URL_CALCULATE = "http://localhost:8080/calculate";
-        return mockMvc.perform(MockMvcRequestBuilders.get(URL_CALCULATE)
+    private MvcResult getMvcResult(int averageSalary, int amountVacationDays) throws Exception {
+        String UR_CACUATE = "http://localhost:8080/calculate";
+        return mockMvc.perform(MockMvcRequestBuilders.get(UR_CACUATE)
                         .param("averageSalary",String.valueOf(averageSalary))
                         .param("amountVacationDays",String.valueOf(amountVacationDays)))
                 .andExpect(status().isOk())
